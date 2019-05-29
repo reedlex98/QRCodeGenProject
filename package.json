@@ -1,0 +1,11 @@
+{
+  "name": "qrcodegenproject",
+  "version": "1.0.0",
+  "description": "It's a project made for me to study Vue.js and try to implement a cool QR feature",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "reedlex98",
+  "license": "ISC"
+}
