@@ -5,14 +5,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="js/vue.min.js"></script>
     <script src="js/qrious.min.js"></script>
+    <script src="js/vue.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
-    <title>Projeto QRCode</title>
+    <title>QRCode Project</title>
 </head>
 
 <body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <div>
+            <!-- <input type="text" size="25" placeholder="Type to generate" :value="text" @input="onData"> -->
 
+            <input type="text" size="25" placeholder="Type to generate" v-model="text">
+        </div>
+        <div v-if="text" class="output">
+            <img :src="newQRCode" alt="QRCode">
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                title:'QRCode Generator',
+                text: '',
+                qrcode: new QRious({ size: 300 })
+            },
+            computed:{
+                newQRCode(){
+                    this.qrcode.value = this.text
+                    return this.qrcode.toDataURL()
+                }
+            }
+            // methods:{
+            //     onData(event){
+            //         this.text = event.target.value
+            //     }
+            // }
+        })
+    </script>
 </body>
 
 </html>
